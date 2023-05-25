@@ -37,6 +37,8 @@ export class ProductsService {
   async findAll(request: FastifyRequest) {
     const session: Session = request['raw']['sessionData'];
 
+    console.log('session', session);
+
     if (!session)
       throw new HttpException('Session not found', HttpStatus.NOT_FOUND);
 

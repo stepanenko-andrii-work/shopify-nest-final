@@ -87,7 +87,7 @@ const rootPath =
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // consumer.apply(AddSessionMiddleware).exclude('/').forRoutes('*');
+    consumer.apply(AddSessionMiddleware).exclude('/').forRoutes('*');
     // consumer
     //   .apply(EnsureInstalledOnShopMiddleware)
     //   .exclude('/api/auth')

@@ -5,7 +5,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { HttpException, HttpStatus } from '@nestjs/common';
-import fastifyStatic from '@fastify/static';
+// import fastifyStatic from '@fastify/static';
 import { join } from 'path';
 
 (async function bootstrap() {
@@ -20,9 +20,13 @@ import { join } from 'path';
 
   // app.setGlobalPrefix('api');
 
-  await app.register(fastifyStatic, {
+  // await app.register(fastifyStatic, {
+  //   root: join(__dirname, '../..', 'frontend', 'dist'),
+  // });
+
+  app.useStaticAssets({
     root: join(__dirname, '../..', 'frontend', 'dist'),
-    // prefix: '',
+    prefix: '/',
   });
 
   // await app.listen(PORT, 'https://nest-app-3.dev-test.pro');

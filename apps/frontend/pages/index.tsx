@@ -11,8 +11,16 @@ import {
 import { TitleBar } from "@shopify/app-bridge-react";
 
 import { trophyImage } from "../assets";
+// import { useEffect } from "react";
 
 export default function HomePage() {
+  // const fetch = useAuthenticatedFetch();
+
+  // useEffect(() => {
+  //   fetch("/api")
+  //     .then((res) => res.json())
+  //     .catch((error) => console.log(error));
+  // }, []);
   return (
     <Page narrowWidth>
       <TitleBar title="App name" primaryAction={null} />

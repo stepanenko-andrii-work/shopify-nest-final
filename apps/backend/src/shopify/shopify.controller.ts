@@ -7,7 +7,7 @@ import {
   IRedirectUrl,
 } from './shopify.interfaces';
 
-@Controller('/api/auth')
+@Controller('api/auth')
 export class ShopifyController {
   constructor(private readonly shopifyService: ShopifyService) {}
   @Get()
@@ -55,8 +55,12 @@ export class ShopifyController {
     if (process.env.MODE === 'dev') {
       return { url: `${process.env.FRONTEND_HOST}?shop=${shop}&host=${host}` };
     } else if (process.env.MODE === 'prod') {
-      console.log(`${process.env.HOST}?shop=${shop}&host=${host}`);
-      return { url: `${process.env.HOST}?shop=${shop}&host=${host}` };
+      // return { url: `${process.env.HOST}?shop=${shop}&host=${host}` };
+      return {
+        url: `https://admin.shopify.com/store/${
+          process.env.SHOP.split('.')[0]
+        }/apps/${process.env.APP_ADMIN_NAME}`,
+      };
     }
 
     return { url: `${process.env.FRONTEND_HOST}?shop=${shop}&host=${host}` };
