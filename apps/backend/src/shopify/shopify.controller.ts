@@ -21,6 +21,8 @@ export class ShopifyController {
     const { installUrl, state }: IInstallAppResult =
       await this.shopifyService.installApp(request);
 
+    console.log('f');
+
     // reply.setCookie('state', state);
 
     return { url: installUrl };
@@ -55,12 +57,12 @@ export class ShopifyController {
     if (process.env.MODE === 'dev') {
       return { url: `${process.env.FRONTEND_HOST}?shop=${shop}&host=${host}` };
     } else if (process.env.MODE === 'prod') {
-      // return { url: `${process.env.HOST}?shop=${shop}&host=${host}` };
-      return {
-        url: `https://admin.shopify.com/store/${
-          process.env.SHOP.split('.')[0]
-        }/apps/${process.env.APP_ADMIN_NAME}`,
-      };
+      return { url: `${process.env.HOST}?shop=${shop}&host=${host}` };
+      // return {
+      //   url: `https://admin.shopify.com/store/${
+      //     process.env.SHOP.split('.')[0]
+      //   }/apps/${process.env.APP_ADMIN_NAME}`,
+      // };
     }
 
     return { url: `${process.env.FRONTEND_HOST}?shop=${shop}&host=${host}` };

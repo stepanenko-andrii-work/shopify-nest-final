@@ -11,6 +11,15 @@ import {
 } from "../components/providers";
 
 function App() {
+  console.log(window);
+  // window.location.href =
+  //   window.location.href.split("?")[0] +
+  //   `?shop=test-store-8393683.myshopify.com&host=https://test-app-1.dev-test.pro`;
+  // console.log(window.location.href);
+
+  const query = new URLSearchParams(location.href);
+  console.log(query.get("host"), query.get("shop"));
+
   const pages = import.meta.glob("../pages/**/!(*.test.[jt]sx)*.([jt]sx)", {
     eager: true,
   });

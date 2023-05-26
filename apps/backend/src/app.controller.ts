@@ -17,7 +17,7 @@ export class AppController {
     private postgreSQLStateRepository: Repository<PostgreSQLStateEntity>,
   ) {}
 
-  @Get()
+  @Get(':splat*')
   // @Render('index')
   async redirectToAuth(@Res() reply: FastifyReply) {
     console.log(await this.postgreSQLStateRepository.find());

@@ -14,7 +14,7 @@ import { join } from 'path';
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({
-      // exposeHeadRoutes: false,
+      exposeHeadRoutes: false,
     }),
   );
 

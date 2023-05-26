@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 import { config } from "dotenv";
 config();
 
+console.log("fj");
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
