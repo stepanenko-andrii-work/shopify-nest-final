@@ -12,7 +12,8 @@ export default defineConfig({
     "process.env.SHOP": JSON.stringify(process.env.SHOP),
     "process.env.HOST": JSON.stringify(process.env.HOST),
   },
-  base: "/static/",
+  base: process.env.MODE === "dev" ? "/" : "/static/",
+  // base: "/static/",
   build: {
     rollupOptions: {
       input: {

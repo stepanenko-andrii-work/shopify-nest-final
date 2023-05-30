@@ -18,8 +18,13 @@ import { join } from 'path';
     }),
   );
 
+  const rootPath =
+    process.env.MODE === 'dev'
+      ? join(__dirname, '../..', 'frontend')
+      : join(__dirname, '../..', 'frontend', 'dist');
+
   await app.register(fastifyStatic, {
-    root: join(__dirname, '../..', 'frontend', 'dist'),
+    root: rootPath,
     prefix: '/static',
   });
 

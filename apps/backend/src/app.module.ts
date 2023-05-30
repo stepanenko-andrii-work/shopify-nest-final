@@ -21,10 +21,10 @@ import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { PostgreSQLStateEntity } from './databases/postgresql/entities/postgresql-state.entity';
 
-const rootPath =
-  process.env.MODE === 'dev'
-    ? { rootPath: join(__dirname, '../..', 'frontend') }
-    : { rootPath: join(__dirname, '../..', 'frontend', 'dist') };
+// const rootPath =
+//   process.env.MODE === 'dev'
+//     ? { rootPath: join(__dirname, '../..', 'frontend') }
+//     : { rootPath: join(__dirname, '../..', 'frontend', 'dist') };
 
 @Module({
   imports: [

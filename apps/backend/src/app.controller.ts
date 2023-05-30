@@ -29,16 +29,13 @@ export class AppController {
       return;
     }
 
-    console.log(__dirname);
+    reply.redirect(302, `http://localhost:5173/`);
 
-    const filePath = path.join(
-      __dirname,
-      '../..',
-      'frontend',
-      'dist',
-      'index.html',
-    );
-    const stream = fs.createReadStream(filePath);
-    reply.type('text/html').send(stream);
+    // const filePath =
+    //   process.env.MODE === 'dev'
+    //     ? path.join(__dirname, '../..', 'frontend', 'index.html')
+    //     : path.join(__dirname, '../..', 'frontend', 'dist', 'index.html');
+    // const stream = fs.createReadStream(filePath);
+    // reply.type('text/html').send(stream);
   }
 }
