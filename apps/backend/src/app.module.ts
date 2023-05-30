@@ -4,10 +4,11 @@ import { ProductsModule } from './products/products.module';
 import { join } from 'path';
 import {
   AddSessionMiddleware,
+  // ValidateAuthenticatedSessionMiddleware,
   // EnsureInstalledOnShopMiddleware,
 } from './app.middleware';
 import { ConfigModule } from '@nestjs/config';
-import { ServeStaticModule } from '@nestjs/serve-static';
+// import { ServeStaticModule } from '@nestjs/serve-static';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MySQLSessionEntity } from './databases/mysql/entities/mysql-session.entity';
@@ -88,6 +89,7 @@ const rootPath =
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AddSessionMiddleware).exclude('/').forRoutes('*');
+    // consumer.apply(ValidateAuthenticatedSessionMiddleware).forRoutes('*');
     // consumer
     //   .apply(EnsureInstalledOnShopMiddleware)
     //   .exclude('/api/auth')

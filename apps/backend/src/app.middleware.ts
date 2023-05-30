@@ -18,6 +18,9 @@ import { PostgreSQLSessionEntity } from './databases/postgresql/entities/postgre
 
 import { shopify } from './shopify/shopify.config';
 import { Session } from '@shopify/shopify-api';
+import { join } from 'path';
+import * as fs from 'fs';
+import { PostgreSQLStateEntity } from './databases/postgresql/entities/postgresql-state.entity';
 @Injectable()
 export class AddSessionMiddleware implements NestMiddleware {
   constructor(
@@ -60,3 +63,28 @@ export class EnsureInstalledOnShopMiddleware implements NestMiddleware {
     next();
   }
 }
+
+// export class ValidateAuthenticatedSessionMiddleware implements NestMiddleware {
+//   constructor(
+//     @InjectRepository(PostgreSQLStateEntity, 'postgres')
+//     private postgreSQLStateRepository: Repository<PostgreSQLStateEntity>,
+//   ) {}
+//   async use(request: FastifyRequest, reply: FastifyReply, next: () => void) {
+//     console.log(await this.postgreSQLStateRepository.find());
+//
+//     if (!(await this.postgreSQLStateRepository.find()).length) {
+//       console.log('here');
+//       const installUrl = `/api/auth?shop=test-store-8393683.myshopify.com`;
+//       reply.redirect(302, installUrl);
+//       return;
+//     }
+//
+//     console.log(__dirname);
+//
+//     const filePath = join(__dirname, '../..', 'frontend', 'dist', 'index.html');
+//     const stream = fs.createReadStream(filePath);
+//     reply.type('text/html').send(stream);
+//
+//     next();
+//   }
+// }
